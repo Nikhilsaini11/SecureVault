@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Logo from './Logo'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Navbar = () => {
+
+    const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+
 
     const generatePassword = (length = 12) => {
         let charset = "";
@@ -24,13 +27,13 @@ const Navbar = () => {
     const handleExport = () => {
         // Step 1: Retrieve the array from localStorage
         const data = JSON.parse(localStorage.getItem('passwords')) || [];
-    
+
         // Step 2: Convert the array to a JSON string
         const jsonString = JSON.stringify(data, null, 2); // Indent for readability
-    
+
         // Step 3: Create a Blob from the JSON string
         const blob = new Blob([jsonString], { type: 'application/json' });
-    
+
         // Step 4: Create a link to download the Blob as a file
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
@@ -40,7 +43,7 @@ const Navbar = () => {
         a.click(); // Programmatically click the link to trigger download
         document.body.removeChild(a); // Remove the link after downloading
         URL.revokeObjectURL(url); // Clean up the URL object
-      };
+    };
 
     const handleGeneratePassword = () => {
         const password = generatePassword();
@@ -68,8 +71,23 @@ const Navbar = () => {
                     <Logo /> {/* Your SecureVault Logo */}
                 </div>
 
-                {/* Right side - Additional buttons */}
-                <div className="flex space-x-4 mx-8">
+                {/* Hamburger Icon (visible only on small screens) */}
+                <div className="block md:hidden">
+                    <button onClick={() => setMobileMenuOpen(!isMobileMenuOpen)} className="text-white focus:outline-none">
+                        <svg
+                            className="w-6 h-6"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+
+                {/* Right side - Additional buttons (visible only on larger screens) */}
+                <div className={`hidden md:flex space-x-4 mx-8 ${isMobileMenuOpen ? 'hidden' : 'flex'}`}>
                     {/* Generate Password Button */}
                     <button onClick={handleGeneratePassword} className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none">
                         Generate Password
@@ -99,6 +117,21 @@ const Navbar = () => {
                             </svg>
                         </button>
                     </div>
+                </div>
+            </div>
+
+            {/* Mobile Menu */}
+            <div className={`lg:hidden ${isMobileMenuOpen ? 'block' : 'hidden'} bg-gray-800 p-4`}>
+                <button onClick={handleGeneratePassword} className="block w-full text-left text-white py-2">
+                    Generate Password
+                </button>
+                <button onClick={handleExport} className="block w-full text-left text-white py-2">
+                    Export
+                </button>
+                <div className="relative">
+                    <button className="w-full text-left text-white py-2">
+                        Profile
+                    </button>
                 </div>
             </div>
         </nav>

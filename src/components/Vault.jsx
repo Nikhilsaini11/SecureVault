@@ -169,21 +169,21 @@ const Vault = () => {
                         </div>
 
                     </div>
-
-                    <button
-                        type="submit"
-                        className="w-1/12 flex justify-center text-lg items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-2 pe-4 rounded-lg shadow transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transform hover:scale-105"
-                    >
-                        <lord-icon
-                            src="https://cdn.lordicon.com/fgxwhgfp.json"
-                            trigger="hover"
-                            stroke="bold"
-                            colors="primary:#ffffff,secondary:#107c91"
-                            style={{ width: "40px", height: "40px" }}>
-                        </lord-icon>
-                        Save
-                    </button>
-
+                    <div className="flex flex-col md:flex-row items-center gap-2">
+                        <button
+                            type="submit"
+                            className="flex justify-center items-center bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-2 pe-4 rounded-lg shadow transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transform hover:scale-105"
+                        >
+                            <lord-icon
+                                src="https://cdn.lordicon.com/fgxwhgfp.json"
+                                trigger="hover"
+                                stroke="bold"
+                                colors="primary:#ffffff,secondary:#107c91"
+                                style={{ width: "40px", height: "40px" }}
+                            ></lord-icon>
+                            Save
+                        </button>
+                    </div>
                 </form>
 
                 <div className="container mx-auto p-4 mt-6">
