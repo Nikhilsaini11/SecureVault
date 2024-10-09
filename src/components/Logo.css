@@ -1,0 +1,60 @@
+.logo-container {
+  display: flex;
+  align-items: center;
+  font-family: 'Verdana', sans-serif;
+}
+
+.locker-icon {
+  position: relative;
+  width: 40px;
+  height: 50px;
+  background: linear-gradient(135deg, #4CAF50, #2A9DF4); /* Green to Blue gradient */
+  border-radius: 4px; /* Make it rectangular for locker look */
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.locker-body {
+  width: 36px;
+  height: 46px;
+  background-color: #fff;
+  border-radius: 4px;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+}
+
+.keyhole {
+  width: 12px;
+  height: 20px;
+  background-color: #333;
+  border-radius: 50%;
+  position: relative;
+}
+
+.keyhole::before {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 12px;
+  background-color: #333;
+  border-radius: 4px;
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.text-part1 {
+  color: #4CAF50; /* Green color for Secure */
+}
+
+.text-part2 {
+  color: #2A9DF4; /* Blue color for Vault */
+}
